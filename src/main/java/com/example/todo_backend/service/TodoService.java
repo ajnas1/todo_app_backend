@@ -1,0 +1,47 @@
+package com.example.todo_backend.service;
+
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
+
+import com.example.todo_backend.dao.TodoDao;
+import com.example.todo_backend.model.TodoModel;
+
+@Service
+public class TodoService {
+    @Autowired
+    TodoDao todoDao;
+    public ResponseEntity<String> createTask(TodoModel todo) {
+       try {
+        todoDao.save(todo);
+        return new ResponseEntity<>("created",HttpStatus.CREATED);
+       } catch (Exception e) {
+        return new ResponseEntity<>("failed",HttpStatus.BAD_REQUEST);
+       }
+    }
+    public ResponseEntity<List<TodoModel>> getTodos() {
+        try {
+            List<TodoModel> todos = todoDao.findAll(); 
+            return new ResponseEntity<>(todos,HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+        
+    }
+    public ResponseEntity<String> deleteTaskById(Integer id) {
+        try {
+            if (todoDao.existsById(id)) {
+                todoDao.deleteById(id);
+                return new ResponseEntity<>("success",HttpStatus.OK);
+            }
+            return new ResponseEntity<>("Task not found", HttpStatus.NOT_FOUND);
+        } catch (Exception e) {
+           return new ResponseEntity<>("failed",HttpStatus.BAD_REQUEST);
+        }
+    }
+    
+}
