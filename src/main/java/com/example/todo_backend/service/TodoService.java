@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
@@ -41,6 +42,17 @@ public class TodoService {
             return new ResponseEntity<>("Task not found", HttpStatus.NOT_FOUND);
         } catch (Exception e) {
            return new ResponseEntity<>("failed",HttpStatus.BAD_REQUEST);
+        }
+    }
+    public ResponseEntity<TodoModel> updateTask(TodoModel todo) {
+        try {
+            if (todoDao.existsById(todo.getId())) {
+                todoDao.save(todo);
+                return new ResponseEntity<>(todo,HttpStatus.OK);
+            }
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
     }
     
