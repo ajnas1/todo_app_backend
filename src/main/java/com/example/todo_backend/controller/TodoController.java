@@ -29,14 +29,14 @@ public class TodoController {
         return todoService.createTask(todo);
     }
 
-    @GetMapping("getAllTodos")
-    public ResponseEntity<List<TodoModel>> getTodos() {
-        return todoService.getTodos();
+    @GetMapping("getAllTasks")
+    public ResponseEntity<List<TodoModel>> getAllTasks() {
+        return todoService.getAllTasks();
     }
     
 
     @DeleteMapping("delete/{id}")
-    public ResponseEntity<String> deleteTaskById(@PathVariable Integer id) {
-        return todoService.deleteTaskById(id);
+    public ResponseEntity<String> deleteTask(@PathVariable Integer id) {
+        return todoService.deleteTask(id);
     }
 }

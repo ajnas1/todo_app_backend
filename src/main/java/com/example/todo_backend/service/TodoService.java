@@ -23,7 +23,7 @@ public class TodoService {
         return new ResponseEntity<>("failed",HttpStatus.BAD_REQUEST);
        }
     }
-    public ResponseEntity<List<TodoModel>> getTodos() {
+    public ResponseEntity<List<TodoModel>> getAllTasks() {
         try {
             List<TodoModel> todos = todoDao.findAll(); 
             return new ResponseEntity<>(todos,HttpStatus.OK);
@@ -32,7 +32,7 @@ public class TodoService {
         }
         
     }
-    public ResponseEntity<String> deleteTaskById(Integer id) {
+    public ResponseEntity<String> deleteTask(Integer id) {
         try {
             if (todoDao.existsById(id)) {
                 todoDao.deleteById(id);
