@@ -13,6 +13,7 @@ import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
+import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 @Data
 @Entity
@@ -22,6 +23,7 @@ public class TodoModel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name ="Id",unique = true,nullable = false )
     private Integer id;
+    @NotBlank(message = "Must not be Empty and NULL")
     private String title;
     private String description;
     @Temporal(TemporalType.TIMESTAMP)

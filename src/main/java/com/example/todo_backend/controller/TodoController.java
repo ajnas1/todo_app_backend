@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.todo_backend.model.TodoModel;
 import com.example.todo_backend.service.TodoService;
 
+import jakarta.validation.Valid;
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +28,7 @@ public class TodoController {
     @Autowired
     TodoService todoService;
     @PostMapping("create")
-    public ResponseEntity<String> createTask(@RequestBody TodoModel todo) {
+    public ResponseEntity<String> createTask (@Valid @RequestBody TodoModel todo) {
         return todoService.createTask(todo);
     }
 
