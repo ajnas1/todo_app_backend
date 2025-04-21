@@ -1,6 +1,7 @@
 package com.example.todo_backend.service;
 
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,6 +54,11 @@ public class TodoService {
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
+    }
+    public ResponseEntity<List<TodoModel>> getCompletedTask() {
+        List<TodoModel> todos = new  ArrayList<>();
+        todos = todoDao.findByCompleted(true);
+        return new ResponseEntity<>(todos, HttpStatus.OK);
     }
     
 }

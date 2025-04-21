@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 
 
+
 @RestController
 @RequestMapping("todos")
 public class TodoController {
@@ -47,4 +48,10 @@ public class TodoController {
     public ResponseEntity<TodoModel> updateTask(@RequestBody TodoModel todo) {
         return todoService.updateTask(todo);
     }
+
+    @GetMapping("getCompletedTask")
+    public ResponseEntity<List<TodoModel>> getCompletedTask() {
+        return todoService.getCompletedTask();
+    }
+    
 }
