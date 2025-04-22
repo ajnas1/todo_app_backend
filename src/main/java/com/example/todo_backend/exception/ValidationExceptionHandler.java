@@ -37,4 +37,16 @@ public class ValidationExceptionHandler {
 
         return new ResponseEntity<>(responseBody, HttpStatus.BAD_REQUEST);
     }
+
+
+    @ExceptionHandler(ResourceNotFoundException.class)
+    public ResponseEntity<Map<String,Object>> handleResourceNotFound(ResourceNotFoundException  ex) {
+        Map<String, Object> errorBody = new HashMap<>();
+        errorBody.put("timestamp", Instant.now().toString());
+        errorBody.put("status", HttpStatus.BAD_REQUEST.value());
+        errorBody.put("error", HttpStatus.BAD_REQUEST.getReasonPhrase());
+        errorBody.put("message", ex.getMessage());
+
+        return new ResponseEntity<>(errorBody, HttpStatus.BAD_REQUEST);
+    }
 }

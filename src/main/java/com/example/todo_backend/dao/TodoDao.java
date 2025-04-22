@@ -12,5 +12,6 @@ import com.example.todo_backend.model.TodoModel;
 public interface TodoDao extends JpaRepository<TodoModel,Integer>{
 
     List<TodoModel> findByCompleted(boolean completed);
+
     
 }

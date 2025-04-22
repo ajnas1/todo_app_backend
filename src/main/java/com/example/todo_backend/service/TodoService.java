@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.example.todo_backend.dao.TodoDao;
+import com.example.todo_backend.exception.ResourceNotFoundException;
 import com.example.todo_backend.model.TodoModel;
 
 @Service
@@ -59,6 +60,18 @@ public class TodoService {
         List<TodoModel> todos = new  ArrayList<>();
         todos = todoDao.findByCompleted(true);
         return new ResponseEntity<>(todos, HttpStatus.OK);
+    }
+    public ResponseEntity<String> toggleTaskStatus(TodoModel todo) {
+        if(todoDao.existsById(todo.getId())) {
+           todoDao.save(todo); 
+           return new ResponseEntity<>("updated",HttpStatus.OK);
+        }
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+    public ResponseEntity<TodoModel> getTaskById(Integer id) {
+            TodoModel todo = todoDao.findById(id)
+                .orElseThrow(() ->  new ResourceNotFoundException("Task not found with ID: " + id));
+                return new ResponseEntity<>(todo,HttpStatus.OK);
     }
     
 }
