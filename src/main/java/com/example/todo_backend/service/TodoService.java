@@ -73,5 +73,12 @@ public class TodoService {
                 .orElseThrow(() ->  new ResourceNotFoundException("Task not found with ID: " + id));
                 return new ResponseEntity<>(todo,HttpStatus.OK);
     }
+    public ResponseEntity<List<TodoModel>> searchTask(String query) {
+        List<TodoModel> todos = todoDao.findByTitleContainingIgnoreCaseOrDescriptionContainingIgnoreCase(query,query);
+        if(todos.isEmpty()) {
+            throw new  ResourceNotFoundException("No Result Found");
+        }
+        return new ResponseEntity<>(todos, HttpStatus.OK);
+    }
     
 }
