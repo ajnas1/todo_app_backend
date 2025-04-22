@@ -38,6 +38,7 @@ public class TodoModel {
     @PrePersist
     protected void onCreate() {
         createdAt = new Date();
+        updatedAt = new Date();
     }
 
     @PreUpdate
