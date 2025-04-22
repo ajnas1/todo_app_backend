@@ -80,5 +80,13 @@ public class TodoService {
         }
         return new ResponseEntity<>(todos, HttpStatus.OK);
     }
+    public ResponseEntity<List<TodoModel>> getAllTasksByDateRange() {
+      try {
+        List<TodoModel> todos = todoDao.findAllByOrderByCreatedAtAsc();
+        return new ResponseEntity<>(todos,HttpStatus.OK);
+      } catch (Exception e) {
+        return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+      }
+    }
     
 }

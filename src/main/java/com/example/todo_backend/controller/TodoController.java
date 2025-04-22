@@ -26,6 +26,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 
 
+
 @RestController
 @RequestMapping("todos")
 public class TodoController {
@@ -70,6 +71,11 @@ public class TodoController {
     @GetMapping("searchTask/{query}")
     public ResponseEntity<List<TodoModel>> searchTask(@PathVariable String query) {
         return todoService.searchTask(query);
+    }
+    
+    @GetMapping("getAllTaskByDateRange")
+    public ResponseEntity<List<TodoModel>> getAllTasksByDateRange() {
+        return todoService.getAllTasksByDateRange();
     }
     
     

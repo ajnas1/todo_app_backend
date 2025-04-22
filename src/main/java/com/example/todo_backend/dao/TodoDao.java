@@ -14,5 +14,7 @@ public interface TodoDao extends JpaRepository<TodoModel,Integer>{
     List<TodoModel> findByCompleted(boolean completed);
 
     List<TodoModel> findByTitleContainingIgnoreCaseOrDescriptionContainingIgnoreCase(String title,String description);
+
+    List<TodoModel> findAllByOrderByCreatedAtAsc();
     
 }
