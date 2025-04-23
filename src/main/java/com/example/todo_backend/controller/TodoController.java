@@ -23,10 +23,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 
 
-
-
-
-
 @RestController
 @RequestMapping("todos")
 public class TodoController {
@@ -77,6 +73,10 @@ public class TodoController {
     public ResponseEntity<List<TodoModel>> getAllTasksByDateRange() {
         return todoService.getAllTasksByDateRange();
     }
-    
+
+    @GetMapping("getTaskByPriority")
+    public ResponseEntity<List<TodoModel>> getTasksByPriority() {
+        return todoService.getTasksByPriority();
+    }
     
 }

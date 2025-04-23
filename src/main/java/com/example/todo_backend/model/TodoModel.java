@@ -34,6 +34,7 @@ public class TodoModel {
     @Column(name = "updated_at")
     private Date updatedAt; 
     private boolean completed;
+    private String priority;
 
     @PrePersist
     protected void onCreate() {

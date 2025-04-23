@@ -88,5 +88,9 @@ public class TodoService {
         return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
       }
     }
+    public ResponseEntity<List<TodoModel>> getTasksByPriority() {
+        List<TodoModel> todos = todoDao.findAllSortedByPriority();
+        return new ResponseEntity<>(todos, HttpStatus.OK);
+    }
     
 }
