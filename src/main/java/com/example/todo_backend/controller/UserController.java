@@ -1,6 +1,5 @@
 package com.example.todo_backend.controller;
 
-import org.hibernate.engine.jndi.spi.JndiService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.web.bind.annotation.GetMapping;

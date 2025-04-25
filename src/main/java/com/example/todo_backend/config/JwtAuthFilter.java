@@ -2,7 +2,6 @@ package com.example.todo_backend.config;
 
 import java.io.IOException;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
@@ -24,7 +23,6 @@ public class JwtAuthFilter extends OncePerRequestFilter{
     private final UserDetailsService userDetailsService;
     private final JwtService jwtService ;
 
-    @Autowired
     public JwtAuthFilter(UserDetailsService userDetailsService, JwtService jwtService) {
         this.userDetailsService = userDetailsService;
         this.jwtService = jwtService;

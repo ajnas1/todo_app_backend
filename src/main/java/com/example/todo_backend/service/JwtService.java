@@ -9,7 +9,6 @@ import java.security.Key;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
-import com.example.todo_backend.model.UserModel;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
