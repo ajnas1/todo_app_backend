@@ -78,5 +78,4 @@ public class TodoController {
     public ResponseEntity<List<TodoModel>> getTasksByPriority() {
         return todoService.getTasksByPriority();
     }
-    
 }
