@@ -15,12 +15,12 @@ public class UserInfoDetails implements UserDetails {
     
 
     public UserInfoDetails(UserModel userModel) {
-        this.username = userModel.getEmail(); // Use email as username
-        this.password = userModel.getPassword();
-        this.authorities = List.of(userModel.getRoles().split(","))
-                .stream()
-                .map(SimpleGrantedAuthority::new)
-                .collect(Collectors.toList());
+        // this.username = userModel.getEmail(); // Use email as username
+        // this.password = userModel.getPassword();
+        // this.authorities = List.of(userModel.getRoles().split(","))
+        //         .stream()
+        //         .map(SimpleGrantedAuthority::new)
+        //         .collect(Collectors.toList());
     }
 
     @Override

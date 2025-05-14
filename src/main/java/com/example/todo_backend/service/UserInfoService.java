@@ -17,14 +17,14 @@ import com.example.todo_backend.model.UserModel;
 public class UserInfoService implements UserDetailsService {
 
     @Autowired
-    private UserInfoDao repository;
+    private UserInfoDao userDao;
 
     @Autowired
     private PasswordEncoder encoder;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Optional<UserModel> userDetail = repository.findByEmail(username); // Assuming 'email' is used as username
+        Optional<UserModel> userDetail = userDao.findByEmail(username); // Assuming 'email' is used as username
 
         // Converting UserInfo to UserDetails
         return userDetail.map(UserInfoDetails::new)
@@ -32,9 +32,13 @@ public class UserInfoService implements UserDetailsService {
     }
 
     public String addUser(UserModel userInfo) {
+        
         // Encode password before saving the user
         userInfo.setPassword(encoder.encode(userInfo.getPassword()));
-        repository.save(userInfo);
+        userInfo.setConformPassword(userInfo.getPassword());
+        System.out.println(userInfo.getPassword());
+        System.out.println(userInfo.getConformPassword());
+        userDao.save(userInfo);
         return "User Added Successfully";
     }
 }
