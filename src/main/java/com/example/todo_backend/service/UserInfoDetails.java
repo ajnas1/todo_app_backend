@@ -5,8 +5,10 @@ import java.util.List;
 import java.util.stream.Collectors;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.GrantedAuthority;
+
 import com.example.todo_backend.model.UserModel;
+
+import org.springframework.security.core.GrantedAuthority;
 
 public class UserInfoDetails implements UserDetails {
     private String username; // Changed from 'name' to 'email' for clarity

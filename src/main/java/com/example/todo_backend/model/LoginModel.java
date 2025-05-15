@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class SignInModel {
+public class LoginModel {
 
     @Email(message = "Email should be valid")
     private String email;

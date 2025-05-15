@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.todo_backend.model.LoginModel;
 import com.example.todo_backend.model.UserModel;
 import com.example.todo_backend.service.JwtService;
 import com.example.todo_backend.service.UserInfoService;
@@ -31,9 +32,15 @@ public class UserController {
         return "Welcome this endpoint is not secure";
     }
 
-    @PostMapping("addNewUser")
-    public ResponseEntity<?> addNewUser(@Valid @RequestBody UserModel userModel) {
-        return  userInfoService.addUser(userModel);
+    @PostMapping("register")
+    public ResponseEntity<?> register(@Valid @RequestBody UserModel userModel) {
+        return  userInfoService.register(userModel);
     }
+
+    @PostMapping("login")
+    public ResponseEntity<?> login(@RequestBody LoginModel userModel) {
+        return userInfoService.login(userModel);
+    }
+    
     
 }
