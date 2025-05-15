@@ -13,8 +13,8 @@ import org.springframework.stereotype.Service;
 
 import com.example.todo_backend.dao.UserInfoDao;
 import com.example.todo_backend.exception.EmailAlreadyExistsException;
-import com.example.todo_backend.model.SignInModel;
-import com.example.todo_backend.model.SignUpModel;
+import com.example.todo_backend.model.RegisterReponseModel;
+import com.example.todo_backend.model.UserModel;
 
 
 @Service
@@ -28,23 +28,42 @@ public class UserInfoService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Optional<SignUpModel> userDetail = userDao.findByEmail(username); // Assuming 'email' is used as username
+        Optional<UserModel> userDetail = userDao.findByEmail(username); // Assuming 'email' is used as username
 
         // Converting UserInfo to UserDetails
         return userDetail.map(UserInfoDetails::new)
                 .orElseThrow(() -> new UsernameNotFoundException("User not found: " + username));
     }
 
-    public ResponseEntity<?> addUser(SignUpModel userInfo) {
+
+    //for register a new user
+    public ResponseEntity<?> addUser(UserModel userInfo) {
+
+        //check the user email already exists 
         if(!userDao.existsByEmail(userInfo.getEmail())) {
-           
-            userInfo.setPassword(encoder.encode(userInfo.getPassword()));
-            userInfo.setConformPassword(userInfo.getPassword());
-            userDao.save(userInfo);
-            return new ResponseEntity<>(userInfo,HttpStatus.ACCEPTED);
+            //encode the password 
+            String encodePassword = encoder.encode(userInfo.getPassword());
+
+            //assing the encoded password to password and conform password field
+            userInfo.setPassword(encodePassword);   
+
+            //because custom password matcher only valid when we save this data to model
+            userInfo.setConformPassword(encodePassword);
+
+            //save the data
+            UserModel savedUser = userDao.save(userInfo);
+
+            //create a response
+            RegisterReponseModel  response = new RegisterReponseModel(
+                "User registered successfully", 
+                HttpStatus.ACCEPTED.value(), 
+                savedUser.getId()
+            );
+
+            return new ResponseEntity<>(response,HttpStatus.CREATED);
         }
 
-        
+        //throw custom email already exits exception
         throw new EmailAlreadyExistsException("User with "+userInfo.getEmail()+" is already exist");
     }
 }

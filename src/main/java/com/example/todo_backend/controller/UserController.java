@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.todo_backend.model.SignUpModel;
+import com.example.todo_backend.model.UserModel;
 import com.example.todo_backend.service.JwtService;
 import com.example.todo_backend.service.UserInfoService;
 
@@ -32,7 +32,7 @@ public class UserController {
     }
 
     @PostMapping("addNewUser")
-    public ResponseEntity<?> addNewUser(@Valid @RequestBody SignUpModel userModel) {
+    public ResponseEntity<?> addNewUser(@Valid @RequestBody UserModel userModel) {
         return  userInfoService.addUser(userModel);
     }
     
