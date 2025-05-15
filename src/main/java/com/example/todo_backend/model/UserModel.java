@@ -3,6 +3,7 @@ package com.example.todo_backend.model;
 
 import java.util.Date;
 
+import com.example.todo_backend.utils.validation.PasswordConstraints;
 import com.example.todo_backend.utils.validation.PasswordMatches;
 
 import jakarta.persistence.Column;
@@ -27,6 +28,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @PasswordMatches
+@PasswordConstraints
 public class UserModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
