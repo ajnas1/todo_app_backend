@@ -60,4 +60,17 @@ public class GlobalExceptionHandler {
 
         return new ResponseEntity<>(errorBody, HttpStatus.CONFLICT);
      }
+
+
+     @ExceptionHandler(InvalidCredentialsException.class)
+     public ResponseEntity<Map<String,Object>> handleInvalidCredentialException(InvalidCredentialsException ex) {
+        
+         Map<String,Object> errorBody = new HashMap<>();
+         errorBody.put("timestamp", Instant.now().toString());
+         errorBody.put("status", HttpStatus.CONFLICT.value());
+         errorBody.put("error", HttpStatus.CONFLICT.getReasonPhrase());
+         errorBody.put("message", ex.getMessage());
+ 
+         return new ResponseEntity<>(errorBody, HttpStatus.CONFLICT);
+      }
 }
