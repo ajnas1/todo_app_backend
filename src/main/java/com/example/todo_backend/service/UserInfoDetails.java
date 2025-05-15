@@ -6,7 +6,7 @@ import java.util.stream.Collectors;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.GrantedAuthority;
-import com.example.todo_backend.model.UserModel;
+import com.example.todo_backend.model.SignUpModel;
 
 public class UserInfoDetails implements UserDetails {
     private String username; // Changed from 'name' to 'email' for clarity
@@ -14,11 +14,11 @@ public class UserInfoDetails implements UserDetails {
     private List<GrantedAuthority> authorities;
     
 
-    public UserInfoDetails(UserModel userModel) {
+    public UserInfoDetails(SignUpModel userModel) {
         // this.username = userModel.getEmail(); // Use email as username
         // this.password = userModel.getPassword();
         // this.authorities = List.of(userModel.getRoles().split(","))
-        //         .stream()
+        //         .stream()    
         //         .map(SimpleGrantedAuthority::new)
         //         .collect(Collectors.toList());
     }

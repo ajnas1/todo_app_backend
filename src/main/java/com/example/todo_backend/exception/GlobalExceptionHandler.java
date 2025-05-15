@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
 
 @ControllerAdvice
-public class ValidationExceptionHandler {
+public class GlobalExceptionHandler {
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
     protected ResponseEntity<Map<String, Object>> handleMethodArgumentNotValid(
@@ -49,4 +49,15 @@ public class ValidationExceptionHandler {
 
         return new ResponseEntity<>(errorBody, HttpStatus.NOT_FOUND);
     }
+
+    @ExceptionHandler(EmailAlreadyExistsException.class)
+    public ResponseEntity<Map<String,Object>> handleEmailAlreadyExists(EmailAlreadyExistsException ex) {
+        Map<String,Object> errorBody = new HashMap<>();
+        errorBody.put("timestamp", Instant.now().toString());
+        errorBody.put("status", HttpStatus.CONFLICT.value());
+        errorBody.put("error", HttpStatus.CONFLICT.getReasonPhrase());
+        errorBody.put("message", ex.getMessage());
+
+        return new ResponseEntity<>(errorBody, HttpStatus.CONFLICT);
+     }
 }

@@ -1,12 +1,13 @@
 package com.example.todo_backend.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.todo_backend.model.UserModel;
+import com.example.todo_backend.model.SignUpModel;
 import com.example.todo_backend.service.JwtService;
 import com.example.todo_backend.service.UserInfoService;
 
@@ -31,7 +32,7 @@ public class UserController {
     }
 
     @PostMapping("addNewUser")
-    public String addNewUser(@Valid @RequestBody UserModel userModel) {
+    public ResponseEntity<?> addNewUser(@Valid @RequestBody SignUpModel userModel) {
         return  userInfoService.addUser(userModel);
     }
     

@@ -1,18 +1,18 @@
 package com.example.todo_backend.utils.validation;
 
-import com.example.todo_backend.model.UserModel;
+import com.example.todo_backend.model.SignUpModel;
 
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
 
-public class PasswordMatchesValidator implements ConstraintValidator<PasswordMatches, UserModel> {
+public class PasswordMatchesValidator implements ConstraintValidator<PasswordMatches, SignUpModel> {
     
     @Override
     public void initialize(PasswordMatches password) {
 
     }
     @Override
-    public boolean isValid(UserModel userModel, ConstraintValidatorContext context) {
+    public boolean isValid(SignUpModel userModel, ConstraintValidatorContext context) {
         if (userModel == null) {
             return true;
         }
