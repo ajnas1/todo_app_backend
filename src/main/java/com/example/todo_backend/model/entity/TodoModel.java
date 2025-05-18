@@ -1,4 +1,4 @@
-package com.example.todo_backend.model;
+package com.example.todo_backend.model.entity;
 
 import com.example.todo_backend.utils.eums.Priority;
 import com.example.todo_backend.utils.eums.TodoStatus;

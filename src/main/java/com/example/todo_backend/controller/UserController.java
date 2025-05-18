@@ -6,8 +6,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.todo_backend.model.LoginModel;
-import com.example.todo_backend.model.UserModel;
+import com.example.todo_backend.model.entity.LoginModel;
+import com.example.todo_backend.model.entity.UserModel;
 import com.example.todo_backend.service.UserInfoService;
 
 import jakarta.validation.Valid;

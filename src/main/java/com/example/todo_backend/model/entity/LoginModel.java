@@ -1,4 +1,4 @@
-package com.example.todo_backend.model;
+package com.example.todo_backend.model.entity;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;

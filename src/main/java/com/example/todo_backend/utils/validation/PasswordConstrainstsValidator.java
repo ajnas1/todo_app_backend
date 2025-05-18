@@ -1,6 +1,6 @@
 package com.example.todo_backend.utils.validation;
 
-import com.example.todo_backend.model.UserModel;
+import com.example.todo_backend.model.entity.UserModel;
 
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;

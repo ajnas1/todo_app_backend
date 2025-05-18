@@ -1,4 +1,4 @@
-package com.example.todo_backend.model;
+package com.example.todo_backend.model.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

@@ -1,4 +1,4 @@
-package com.example.todo_backend.model;
+package com.example.todo_backend.model.dto;
 
 public class RegisterReponseModel {
     private String message;

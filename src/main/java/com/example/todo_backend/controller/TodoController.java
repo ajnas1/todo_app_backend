@@ -4,7 +4,7 @@ package com.example.todo_backend.controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.todo_backend.model.TodoModel;
+import com.example.todo_backend.model.entity.TodoModel;
 import com.example.todo_backend.service.TodoService;
 
 import jakarta.validation.Valid;

@@ -6,7 +6,7 @@ import java.util.stream.Collectors;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import com.example.todo_backend.model.UserModel;
+import com.example.todo_backend.model.entity.UserModel;
 
 import org.springframework.security.core.GrantedAuthority;
 

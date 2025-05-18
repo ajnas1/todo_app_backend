@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
-import com.example.todo_backend.model.TodoModel;
+import com.example.todo_backend.model.entity.TodoModel;
 
 @Repository
 public interface TodoDao extends JpaRepository<TodoModel,Integer>{

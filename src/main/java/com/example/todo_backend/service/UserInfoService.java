@@ -15,10 +15,10 @@ import com.example.todo_backend.dao.UserInfoDao;
 import com.example.todo_backend.exception.EmailAlreadyExistsException;
 import com.example.todo_backend.exception.InvalidCredentialsException;
 import com.example.todo_backend.exception.ResourceNotFoundException;
-import com.example.todo_backend.model.LoginModel;
-import com.example.todo_backend.model.LoginResponseModel;
-import com.example.todo_backend.model.RegisterReponseModel;
-import com.example.todo_backend.model.UserModel;
+import com.example.todo_backend.model.dto.LoginResponseModel;
+import com.example.todo_backend.model.dto.RegisterReponseModel;
+import com.example.todo_backend.model.entity.LoginModel;
+import com.example.todo_backend.model.entity.UserModel;
 
 
 @Service

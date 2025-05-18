@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 
 import com.example.todo_backend.dao.TodoDao;
 import com.example.todo_backend.exception.ResourceNotFoundException;
-import com.example.todo_backend.model.TodoModel;
+import com.example.todo_backend.model.entity.TodoModel;
 
 @Service
 public class TodoService {
